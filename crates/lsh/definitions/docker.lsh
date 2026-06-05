@@ -1,0 +1,17 @@
+#[display_name = "Dockerfile"]
+#[path = "**/Dockerfile"]
+#[path = "**/*.Dockerfile"]
+
+pub fn docker() {
+    until /$/ {
+        yield other;
+
+        if /#.*/ {
+            yield comment;
+        } else if /^\s*(?:run|add|arg|cmd|copy|entrypoint|env|expose|from|healthcheck|label|maintainer|onbuild|shell|stopsignal|user|volume|workdir)\b/i {
+            yield keyword.control;
+        } else if /\bAS\b/i {
+            yield keyword.control;
+        }
+    }
+}

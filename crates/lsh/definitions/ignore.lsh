@@ -1,6 +1,7 @@
 #[display_name = "Ignore"]
 #[path = "**/.git-blame-ignore-revs"]
 #[path = "**/.gitignore"]
+#[path = "**/.dockerignore"]
 pub fn ignore() {
     if /#.*/ {
         yield comment;
